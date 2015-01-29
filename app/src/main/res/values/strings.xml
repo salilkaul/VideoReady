@@ -19,7 +19,7 @@
     </string-array>
 
     <string name="title_activity_play_video">PlayVideoActivity</string>
-    <string name="title_activity_main_activity2">MainActivity2</string>
+    <string name="title_activity_main_activity2">DemoVideoReady</string>
     <string name="title_activity_testyoutubeplayer">testyoutubeplayer</string>
     <string name="error_thumbnail_view">There was an error initializing the YouTubeThumbnailView</string>
     <string name="error_player">There was an error initializing the YouTubePlayer</string>
@@ -34,5 +34,11 @@
         <item>"Sports"</item>
         <item>"Comedy"</item>
         <item>"Action"</item>
+    </string-array>
+    <string-array name="cricketvideos">
+        <item>https://www.youtube.com/watch?v=IwPcx_ZwKHs</item>
+        <item>https://www.youtube.com/watch?v=D5WCJFRrNfs</item>
+        <item>https://www.youtube.com/watch?v=IAis9VtaRyI</item>
+        <item>https://www.youtube.com/watch?v=bqaPQbVPFvA</item>
     </string-array>
 </resources>

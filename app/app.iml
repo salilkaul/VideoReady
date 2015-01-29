@@ -95,6 +95,7 @@
     <orderEntry type="library" exported="" name="google-api-client-1.19.1" level="project" />
     <orderEntry type="library" exported="" name="YouTubeAndroidPlayerApi" level="project" />
     <orderEntry type="library" exported="" name="google-api-services-youtube-v3-rev125-1.19.1" level="project" />
+    <orderEntry type="library" exported="" name="library-aar-1.0.0" level="project" />
   </component>
 </module>
 

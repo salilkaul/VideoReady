@@ -31,7 +31,7 @@ import datamodels.videodetails;
 import demovideoready.lazyimageloading.LazyImageLoadAdapter;
 
 
-public class MainActivity extends ActionBarActivity implements CreateFragment.OnFragmentInteractionListener ,videoImageFragment.OnFragmentInteractionListener_Video ,VideoFragment.OnFragmentInteractionListener_videoFragment {
+public class MainActivity extends ActionBarActivity implements CreateFragment.OnFragmentInteractionListener ,videoImageFragment.OnFragmentInteractionListener_Video ,VideoFragment.OnFragmentInteractionListener_videoFragment,videoImageFragment_cricket.OnFragmentInteractionListener_cricket {
 
 
     List<videodetails> listofviddetails ;
@@ -42,6 +42,8 @@ public class MainActivity extends ActionBarActivity implements CreateFragment.On
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     String[] imgarray ;
+    String[] imgarray_cricket ;
+    String[] videoids_cricket ;
     private ActionBarDrawerToggle actionBarDrawerToggle ;
     Spinner channelList ;
     @Override
@@ -49,7 +51,8 @@ public class MainActivity extends ActionBarActivity implements CreateFragment.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         channelList=(Spinner)findViewById(R.id.spinner);
-
+        videoids_cricket =getResources().getStringArray(R.array.cricketvideos);
+        imgarray_cricket= new String[videoids_cricket.length];
         testArray = getResources().getStringArray(R.array.listofvid);
         final String[] finaltestArray = testArray;
         String[] channelList_array =getResources().getStringArray(R.array.channellist);
@@ -63,7 +66,17 @@ public class MainActivity extends ActionBarActivity implements CreateFragment.On
                 mfuex.printStackTrace();;
             }
             }
+        for(int i=0;i<videoids_cricket.length;i++){
+            try {
+                imgarray_cricket[i] = "http://img.youtube.com/vi/"+PlayVideoActivity.getYouTubeID(videoids_cricket[i])+"/0.jpg";
+            }catch (MalformedURLException mfuex){
+                mfuex.printStackTrace();;
+            }
+        }
+
         Log.i("Value of image URL's",imgarray.toString());
+        Log.i("Value of image URL's cricket",imgarray_cricket.toString());
+
         videoImageFragment vf = new videoImageFragment();
         Bundle bun = new Bundle();
         bun.putStringArray("IMAGEURLS",imgarray);
@@ -77,10 +90,12 @@ public class MainActivity extends ActionBarActivity implements CreateFragment.On
         mNavigationDrawerItemTitles=getResources().getStringArray(R.array.navigation_drawer_items_array);
         mDrawerLayout=(DrawerLayout)findViewById(R.id.drawer_layout);
         mDrawerList=(ListView)findViewById(R.id.left_drawer);
-        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[3];
-        drawerItem[0] = new ObjectDrawerItem("Create");
-        drawerItem[1] = new ObjectDrawerItem("Read");
-        drawerItem[2] = new ObjectDrawerItem("List of Videos");
+        ObjectDrawerItem[] drawerItem = new ObjectDrawerItem[5];
+        drawerItem[0] = new ObjectDrawerItem("List of Cricket Videos");
+        drawerItem[1] = new ObjectDrawerItem("Dummy Screen");
+        drawerItem[2] = new ObjectDrawerItem("List of Fame Videos");
+        drawerItem[3] = new ObjectDrawerItem("Channels");
+        drawerItem[4] = new ObjectDrawerItem("Settings");
         DrawerCustomAdapter navigation_adapter = new DrawerCustomAdapter(this, R.layout.navigation_listview, drawerItem);
         mDrawerList.setAdapter(navigation_adapter);
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -153,7 +168,10 @@ public class MainActivity extends ActionBarActivity implements CreateFragment.On
         Fragment fragment =null;
         switch (position){
             case 0:
-                fragment = new CreateFragment();
+                fragment = new videoImageFragment_cricket();
+                Bundle bun1 = new Bundle();
+                bun1.putStringArray("IMAGEURLS",imgarray_cricket);
+                fragment.setArguments(bun1);
                 break;
             case 1:
                 fragment = new CreateFragment();
@@ -164,7 +182,16 @@ public class MainActivity extends ActionBarActivity implements CreateFragment.On
                 bun.putStringArray("IMAGEURLS",imgarray);
                 fragment.setArguments(bun);
                 break;
+            case 3:
+                //Channel Listing
+                Log.i("Going to start channel","Going to start");
+                Intent channelList = new Intent(this,TabsViewPagerFragmentActivity.class);
+                startActivity(channelList);
+                break ;
+            case 4:
+                //settings screen
 
+                break ;
             default:
                 break;
         }
@@ -208,6 +235,14 @@ public class MainActivity extends ActionBarActivity implements CreateFragment.On
     @Override
     public void onFragmentInteraction_videoFragment(Uri uri) {
 
+    }
+
+    @Override
+    public void onFragmentInteraction_cricket(int id) {
+        String videoURL =videoids_cricket[id];
+        Intent startYouTubeView = new Intent(MainActivity.this,testyoutubeplayer.class);
+        startYouTubeView.putExtra("URL",videoURL);
+        startActivity(startYouTubeView);
     }
 }
 
