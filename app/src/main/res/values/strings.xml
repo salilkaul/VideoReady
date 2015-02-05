@@ -13,10 +13,14 @@
         <item>https://www.youtube.com/watch?v=92t3evWvQsw</item>
     </string-array>
     <string-array name="navigation_drawer_items_array">
-        <item>Genre</item>
+        <item>Dummy Screen</item>
+        <item>List of Fame Videos</item>
         <item>Channels</item>
-        <item>Help</item>
+        <item>Settings</item>
     </string-array>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 
     <string name="title_activity_play_video">PlayVideoActivity</string>
     <string name="title_activity_main_activity2">DemoVideoReady</string>
@@ -29,6 +33,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="drawer_open">"drawer open"</string>
     <string name="drawer_close">"drawer close"</string>
+
     <string-array name="channellist">
         <item>"Fame"</item>
         <item>"Sports"</item>
@@ -41,4 +46,11 @@
         <item>https://www.youtube.com/watch?v=IAis9VtaRyI</item>
         <item>https://www.youtube.com/watch?v=bqaPQbVPFvA</item>
     </string-array>
+
+    <string name="title_activity_main_activity3">MainActivity3</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="title_activity_test_view_pager">TestViewPager</string>
+
 </resources>

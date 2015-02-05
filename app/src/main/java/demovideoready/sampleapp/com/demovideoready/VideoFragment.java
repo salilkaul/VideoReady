@@ -2,9 +2,9 @@ package demovideoready.sampleapp.com.demovideoready;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;

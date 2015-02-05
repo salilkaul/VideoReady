@@ -1,8 +1,8 @@
 package demovideoready.sampleapp.com.demovideoready;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-
 import demovideoready.sampleapp.com.demovideoready.dummy.DummyContent;
 
 /**
@@ -21,7 +20,7 @@ import demovideoready.sampleapp.com.demovideoready.dummy.DummyContent;
  * Large screen devices (such as tablets) are supported by replacing the ListView
  * with a GridView.
  * <p/>
- * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
+ * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener_3}
  * interface.
  */
 public class ItemFragment3 extends Fragment implements AbsListView.OnItemClickListener {
@@ -35,7 +34,7 @@ public class ItemFragment3 extends Fragment implements AbsListView.OnItemClickLi
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private OnFragmentInteractionListener_3 mListener;
 
     /**
      * The fragment's ListView/GridView.
@@ -75,8 +74,9 @@ public class ItemFragment3 extends Fragment implements AbsListView.OnItemClickLi
         }
 
         // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        String[] thirdarray={"thirdarrayone","thirdarraythree","thirdarraythree"};
+        mAdapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, thirdarray);
     }
 
     @Override
@@ -98,7 +98,7 @@ public class ItemFragment3 extends Fragment implements AbsListView.OnItemClickLi
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mListener = (OnFragmentInteractionListener) activity;
+            mListener = (OnFragmentInteractionListener_3) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -117,7 +117,7 @@ public class ItemFragment3 extends Fragment implements AbsListView.OnItemClickLi
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
+            mListener.onFragmentInteraction_3(DummyContent.ITEMS.get(position).id);
         }
     }
 
@@ -144,9 +144,9 @@ public class ItemFragment3 extends Fragment implements AbsListView.OnItemClickLi
      * "http://developer.android.com/training/basics/fragments/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
-    public interface OnFragmentInteractionListener {
+    public interface OnFragmentInteractionListener_3 {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(String id);
+        public void onFragmentInteraction_3(String id);
     }
 
 }

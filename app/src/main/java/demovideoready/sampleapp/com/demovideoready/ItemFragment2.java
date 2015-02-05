@@ -1,8 +1,8 @@
 package demovideoready.sampleapp.com.demovideoready;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
-
 
 import demovideoready.sampleapp.com.demovideoready.dummy.DummyContent;
 

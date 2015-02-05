@@ -1,8 +1,6 @@
 package demovideoready.sampleapp.com.demovideoready;
 
 
-import demovideoready.sampleapp.com.demovideoready.PagerAdapter;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,16 +16,13 @@ import java.util.List;
 /**
  * Created by ig on 29/1/15.
  */
-public class TabsViewPagerFragmentActivity  extends FragmentActivity implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener,ItemFragment3.OnFragmentInteractionListener,ItemFragment.OnFragmentInteractionListener_1,ItemFragment2.OnFragmentInteractionListener_2 {
+public class TabsViewPagerFragmentActivity  extends FragmentActivity implements TabHost.OnTabChangeListener, ViewPager.OnPageChangeListener,ItemFragment.OnFragmentInteractionListener_1,ItemFragment2.OnFragmentInteractionListener_2 {
     private TabHost mTabHost;
     private ViewPager mViewPager;
     private HashMap<String, TabInfo> mapTabInfo = new HashMap<String, TabsViewPagerFragmentActivity.TabInfo>();
     private PagerAdapter mPagerAdapter ;
 
-    @Override
-    public void onFragmentInteraction(String id) {
 
-    }
 
     @Override
     public void onFragmentInteraction_1(String id) {

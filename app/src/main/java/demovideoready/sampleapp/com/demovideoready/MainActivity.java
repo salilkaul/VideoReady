@@ -1,39 +1,28 @@
 package demovideoready.sampleapp.com.demovideoready;
 
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.net.MalformedURLException;
 import java.util.List;
 
 import datamodels.videodetails;
-import demovideoready.lazyimageloading.LazyImageLoadAdapter;
 
 
-public class MainActivity extends ActionBarActivity implements CreateFragment.OnFragmentInteractionListener ,videoImageFragment.OnFragmentInteractionListener_Video ,VideoFragment.OnFragmentInteractionListener_videoFragment,videoImageFragment_cricket.OnFragmentInteractionListener_cricket {
-
-
+public class MainActivity extends ActionBarActivity implements CreateFragment.OnFragmentInteractionListener ,videoImageFragment.OnFragmentInteractionListener_Video ,VideoFragment.OnFragmentInteractionListener_videoFragment,videoImageFragment_cricket.OnFragmentInteractionListener_cricket,ItemFragment.OnFragmentInteractionListener_1 ,ItemFragment2.OnFragmentInteractionListener_2,ItemFragment3.OnFragmentInteractionListener_3{
     List<videodetails> listofviddetails ;
 
     String[] testArray ;
@@ -45,27 +34,33 @@ public class MainActivity extends ActionBarActivity implements CreateFragment.On
     String[] imgarray_cricket ;
     String[] videoids_cricket ;
     private ActionBarDrawerToggle actionBarDrawerToggle ;
-    Spinner channelList ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+                //Do some stuff
+            Log.i("Orientation Detection  Code","ORIENTATION_LANDSCAPE");
+        }
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            //Do some stuff
+            Log.i("Orientation Detection  Code","ORIENTATION_POTRAIT");
+        }
         setContentView(R.layout.activity_main);
-        channelList=(Spinner)findViewById(R.id.spinner);
         videoids_cricket =getResources().getStringArray(R.array.cricketvideos);
         imgarray_cricket= new String[videoids_cricket.length];
         testArray = getResources().getStringArray(R.array.listofvid);
         final String[] finaltestArray = testArray;
         String[] channelList_array =getResources().getStringArray(R.array.channellist);
-        ArrayAdapter spinnerArrayAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,channelList_array);
-        channelList.setAdapter(spinnerArrayAdapter);
-        imgarray  = new String[finaltestArray.length];
-        for(int i=0;i<finaltestArray.length;i++){
+        imgarray=new String[]{"http://res.cloudinary.com/videoready/image/upload/c_fill,g_north,w_488,h_280/vr-img-image1420014201129.jpg","http://res.cloudinary.com/videoready/image/upload/c_fill,g_north,w_488,h_280/vr-img-image1420014199372.jpg","http://res.cloudinary.com/videoready/image/upload/c_fill,g_north,w_235,h_130/vr-img-image1420014190876.jpg","http://res.cloudinary.com/videoready/image/upload/c_fill,g_north,w_235,h_130/vr-img-image1420020243055.jpg"};
+
+
+       /* for(int i=0;i<finaltestArray.length;i++){
             try {
                 imgarray[i] = "http://img.youtube.com/vi/"+PlayVideoActivity.getYouTubeID(finaltestArray[i])+"/0.jpg";
             }catch (MalformedURLException mfuex){
                 mfuex.printStackTrace();;
             }
-            }
+            }*/
         for(int i=0;i<videoids_cricket.length;i++){
             try {
                 imgarray_cricket[i] = "http://img.youtube.com/vi/"+PlayVideoActivity.getYouTubeID(videoids_cricket[i])+"/0.jpg";
@@ -111,14 +106,14 @@ public class MainActivity extends ActionBarActivity implements CreateFragment.On
             /** Called when a drawer has settled in a completely closed state. */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
-                getSupportActionBar().setTitle("Drawer Closed");
+                getSupportActionBar().setTitle("");
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
 
             /** Called when a drawer has settled in a completely open state. */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle("Drawer Opened");
+                getSupportActionBar().setTitle("DemoVideoReady");
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
@@ -184,9 +179,7 @@ public class MainActivity extends ActionBarActivity implements CreateFragment.On
                 break;
             case 3:
                 //Channel Listing
-                Log.i("Going to start channel","Going to start");
-                Intent channelList = new Intent(this,TabsViewPagerFragmentActivity.class);
-                startActivity(channelList);
+                fragment =ChannelFragment.newInstance("Test of channels","Test of channels");
                 break ;
             case 4:
                 //settings screen
@@ -243,6 +236,21 @@ public class MainActivity extends ActionBarActivity implements CreateFragment.On
         Intent startYouTubeView = new Intent(MainActivity.this,testyoutubeplayer.class);
         startYouTubeView.putExtra("URL",videoURL);
         startActivity(startYouTubeView);
+    }
+
+    @Override
+    public void onFragmentInteraction_1(String id) {
+
+    }
+
+    @Override
+    public void onFragmentInteraction_2(String id) {
+
+    }
+
+    @Override
+    public void onFragmentInteraction_3(String id) {
+
     }
 }
 

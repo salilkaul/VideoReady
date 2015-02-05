@@ -9,8 +9,6 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
 
 import datamodels.videodetails;
@@ -78,7 +76,7 @@ public class VideoListAdapter implements ListAdapter {
         View rowView =convertView ;
         if(rowView==null){
             LayoutInflater li =activityctx.getLayoutInflater();
-            rowView=li.inflate(R.layout.row_view,null);
+            rowView=li.inflate(R.layout.row_view,parent,false);
             ViewHolder holder = new ViewHolder();
            // holder.tv=(TextView)rowView.findViewById(R.id.textView_row);
             holder.iv=(ImageView)rowView.findViewById(R.id.imageView);

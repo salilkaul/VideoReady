@@ -53,7 +53,7 @@ public class LazyImageLoadAdapter extends BaseAdapter {
         View rowView =convertView;
         ViewHolder holder;
         if(rowView==null){
-            rowView=li.inflate(R.layout.row_view,null);
+            rowView=li.inflate(R.layout.row_view,parent,false);
             holder = new ViewHolder();
             //holder.text=(TextView)rowView.findViewById(R.id.textView_row);
             holder.iv=(ImageView)rowView.findViewById(R.id.imageView);
