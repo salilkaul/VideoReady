@@ -1,5 +1,6 @@
 package demovideoready.sampleapp.com.demovideoready;
 
+import android.app.FragmentManager;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 
@@ -25,7 +27,7 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 public class testyoutubeplayer   extends YouTubeFailureRecoveryActivity implements
         View.OnClickListener,
         CompoundButton.OnCheckedChangeListener,
-        YouTubePlayer.OnFullscreenListener {
+        YouTubePlayer.OnFullscreenListener,ItemFragment.OnFragmentInteractionListener_1 ,ItemFragment2.OnFragmentInteractionListener_2,ItemFragment3.OnFragmentInteractionListener_3 {
 
 
     private static final int PORTRAIT_ORIENTATION = Build.VERSION.SDK_INT < 9
@@ -48,6 +50,9 @@ public class testyoutubeplayer   extends YouTubeFailureRecoveryActivity implemen
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.fullscreen_demo);
+        FrameLayout tabholder =(FrameLayout)findViewById(R.id.tabholder);
+        FragmentManager fm =getFragmentManager();
+        fm.beginTransaction().replace(R.id.tabholder,ChannelFragment.newInstance("abc","abc")).commit();
         baseLayout = (LinearLayout) findViewById(R.id.layout);
         playerView = (YouTubePlayerView) findViewById(R.id.player);
         fullscreenButton = (Button) findViewById(R.id.fullscreen_button);
@@ -187,6 +192,21 @@ public class testyoutubeplayer   extends YouTubeFailureRecoveryActivity implemen
         }
         return id;
 
+
+    }
+
+    @Override
+    public void onFragmentInteraction_1(String id) {
+
+    }
+
+    @Override
+    public void onFragmentInteraction_2(String id) {
+
+    }
+
+    @Override
+    public void onFragmentInteraction_3(String id) {
 
     }
 }

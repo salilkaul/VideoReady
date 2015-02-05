@@ -33,11 +33,11 @@
       android:padding="5dp"
       android:orientation="vertical">
 
-    <TextView
+    <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@android:style/TextAppearance.Small"
-        android:text="@string/fullscreen_tutorial"/>
+        android:id="@+id/tabholder"
+        ></FrameLayout>
 
     <CheckBox
         android:id="@+id/landscape_fullscreen_checkbox"
